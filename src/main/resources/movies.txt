@@ -1,0 +1,11 @@
+Fast and Furious 8|2017|7|IMDb|"Great action sequences!"|John|Universal Studios|Los Angeles|Vin Diesel|1967
+Fast and Furious 8|2017|7|IMDb|"A bit predictable, but enjoyable"|Mary|Universal Studios|Los Angeles|Dwayne Johnson|1972
+Fast and Furoius 9|2021|8|TIFF|"The best one in the series!"|Sara|Universal Studios|Los Angeles|Vin Diesel|1967
+Fast and Furoius 9|2021|8|TIFF|"Not bad"|Jim|Universal Studios|Los Angeles|Michelle Rodriguez|1978
+Fast and Furoius 10|2023|9|IMDb|"with a lot of pilot twists"|Mike|Paramount Pictures|Hollywood|Vin Diesel|1967
+Fast and Furoius 10|2023|9|IMDb|||Paramount Pictures|Hollywood|Charlize Theron|1975
+Inception|2010|9|IMDb|"Such a masterpiece"|Ema|Warner Bros.|Burbank|Leonardo DiCaprio|1974
+Inception|2010|9|IMDb|"Mind blowing"|Anna|Warner Bros.|Burbank|Joseph Gordon-Levitt|1981
+No Time to Die|2021|7|IMDb|"Not what I expected, happy to go along for the ride"|David|Eon Production|London|Daniel Craig|1968
+No Time to Die|2021|7|IMDb|"Quite a mess"|Bob|Eon Production|London|Ana de Armas|1988
+
