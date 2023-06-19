@@ -10,7 +10,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
 public class MovieActor {
@@ -18,10 +17,10 @@ public class MovieActor {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "actor_name")
+  //  @Column(name = "actor_name")
     private String name;
 
-    @Column
+   // @Column
     private int birthYear;
 
     @ManyToMany(mappedBy = "actors")

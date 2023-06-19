@@ -3,12 +3,13 @@ package org.fasttratckit.movies.service.movie;
 import lombok.RequiredArgsConstructor;
 
 import org.fasttratckit.movies.model.movie.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class MovieService {
     private MovieReader movieReader;
     private MovieRepository movieRepository;
@@ -17,7 +18,10 @@ public class MovieService {
     private MovieStudioRepository studioRepository;
     private MovieActorsRepository actorsRepository;
 
-    public void MovieService() {
+    @Autowired
+    public MovieService(MovieReader movieReader, MovieRepository movieRepository, MovieRatingRepository ratingRepository,
+                        MovieReviewRepository reviewRepository, MovieStudioRepository studioRepository,
+                        MovieActorsRepository actorsRepository) {
         System.out.println("Post construct in Country Service");
         List<Movie> movies = movieReader.readMovies();
 

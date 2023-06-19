@@ -41,7 +41,7 @@ public class MovieReader {
     private Movie parseMovie(String line) {
         String[] parts = line.split("\\|");
 
-        if (parts.length >= 6) {
+        if (parts.length >= 10) {
             String movieName = parts[0];
             int releaseYear = Integer.parseInt(parts[1]);
             int movieRating = parts[2].isEmpty() ? 0 : Integer.parseInt(parts[2]);
@@ -81,13 +81,20 @@ public class MovieReader {
             }
 
             if (actorName != null && actorBirthYear != 0) {
-                MovieActor actor = new MovieActor();
-                actor.setName(actorName);
-                actor.setBirthYear(actorBirthYear);
-                List<MovieActor> actors = new ArrayList<>();
-                actors.add(actor);
-                movie.setActors(actors);
-
+                MovieActor actor = null;
+                for (MovieActor existingActor : movie.getActors()) {
+                    if (existingActor.getName().equals(actorName)) {
+                        actor = existingActor;
+                        break;
+                    }
+                }
+                if (actor == null) {
+                    actor = new MovieActor();
+                    actor.setName(actorName);
+                    actor.setBirthYear(actorBirthYear);
+                    movie.getActors().add(actor);
+                }
+                actor.getMovies().add(movie);
             }
 
             return movie;

@@ -9,72 +9,73 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/movie")
 public class MovieController {
-    @RestController
-    @RequestMapping("/movies")
-    public class MovieController {
-        private final MovieService movieService;
 
-        @Autowired
-        public MovieController(MovieService movieService) {
-            this.movieService = movieService;
-        }
 
-        @GetMapping
-        public ResponseEntity<List<Movie>> getAllMovies() {
-            List<Movie> movies = movieService.getAllMovies();
-            return ResponseEntity.ok(movies);
-        }
+    private final MovieService movieService;
 
-        @GetMapping("/{id}")
-        public ResponseEntity<Movie> getMovieById(@PathVariable Integer id) {
-            Movie movie = movieService.getMovieById(id);
-            return ResponseEntity.ok(movie);
-        }
+    @Autowired
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
+    }
 
-        @PostMapping
-        public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
-            Movie createdMovie = movieService.createMovie(movie);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdMovie);
-        }
+    @GetMapping
+    public ResponseEntity<List<Movie>> getAllMovies() {
+        List<Movie> movies = movieService.getAllMovies();
+        return ResponseEntity.ok(movies);
+    }
 
-        @PutMapping("/{id}")
-        public ResponseEntity<Movie> updateMovie(@PathVariable Integer id, @RequestBody Movie updatedMovie) {
-            Movie movie = movieService.updateMovie(id, updatedMovie);
-            return ResponseEntity.ok(movie);
-        }
+    @GetMapping("/{id}")
+    public ResponseEntity<Movie> getMovieById(@PathVariable Integer id) {
+        Movie movie = movieService.getMovieById(id);
+        return ResponseEntity.ok(movie);
+    }
 
-        @DeleteMapping("/{id}")
-        public ResponseEntity<Void> deleteMovie(@PathVariable Integer id) {
-            movieService.deleteMovie(id);
-            return ResponseEntity.noContent().build();
-        }
+    @PostMapping
+    public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
+        Movie createdMovie = movieService.createMovie(movie);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdMovie);
+    }
 
-        @PostMapping("/{movieId}/rating")
-        public ResponseEntity<Movie> addMovieRating(
-                @PathVariable Integer movieId, @RequestBody MovieRating movieRating) {
-            MovieRating addedRating = movieService.addMovieRating(movieId, movieRating);
-            return ResponseEntity.ok(addedRating.getMovie());
-        }
+    @PutMapping("/{id}")
+    public ResponseEntity<Movie> updateMovie(@PathVariable Integer id, @RequestBody Movie updatedMovie) {
+        Movie movie = movieService.updateMovie(id, updatedMovie);
+        return ResponseEntity.ok(movie);
+    }
 
-        @PostMapping("/{movieId}/review")
-        public ResponseEntity<Movie> addMovieReview(
-                @PathVariable Integer movieId, @RequestBody MovieReview movieReview) {
-            MovieReview addedReview = movieService.addMovieReview(movieId, movieReview);
-            return ResponseEntity.ok(addedReview.getMovie());
-        }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMovie(@PathVariable Integer id) {
+        movieService.deleteMovie(id);
+        return ResponseEntity.noContent().build();
+    }
 
-        @PostMapping("/{movieId}/studio")
-        public ResponseEntity<List<Movie>>addMovieStudio(
-                @PathVariable Integer movieId, @RequestBody MovieStudio movieStudio) {
-            MovieStudio addedStudio = movieService.addMovieStudio(movieId, movieStudio);
-            return ResponseEntity.ok(addedStudio.getMovies());
-        }
+    @PostMapping("/{movieId}/rating")
+    public ResponseEntity<Movie> addMovieRating(
+            @PathVariable Integer movieId, @RequestBody MovieRating movieRating) {
+        MovieRating addedRating = movieService.addMovieRating(movieId, movieRating);
+        return ResponseEntity.ok(addedRating.getMovie());
+    }
 
-        @PostMapping("/{movieId}/actor")
-        public ResponseEntity<List<Movie>> addMovieActor(
-                @PathVariable Integer movieId, @RequestBody MovieActor movieActor) {
-            MovieActor addedActor = movieService.addMovieActor(movieId, movieActor);
-            return ResponseEntity.ok(addedActor.getMovies());
-        }
+    @PostMapping("/{movieId}/review")
+    public ResponseEntity<Movie> addMovieReview(
+            @PathVariable Integer movieId, @RequestBody MovieReview movieReview) {
+        MovieReview addedReview = movieService.addMovieReview(movieId, movieReview);
+        return ResponseEntity.ok(addedReview.getMovie());
+    }
+
+    @PostMapping("/{movieId}/studio")
+    public ResponseEntity<List<Movie>> addMovieStudio(
+            @PathVariable Integer movieId, @RequestBody MovieStudio movieStudio) {
+        MovieStudio addedStudio = movieService.addMovieStudio(movieId, movieStudio);
+        return ResponseEntity.ok(addedStudio.getMovies());
+    }
+
+    @PostMapping("/{movieId}/actor")
+    public ResponseEntity<MovieActor> addMovieActor(@PathVariable Integer movieId, @RequestBody MovieActor movieActor) {
+        MovieActor addedActor = movieService.addMovieActor(movieId, movieActor);
+        return ResponseEntity.ok(addedActor);
+    }
 }
+

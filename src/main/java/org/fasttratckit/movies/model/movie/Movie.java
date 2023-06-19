@@ -1,5 +1,6 @@
 package org.fasttratckit.movies.model.movie;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,20 +32,14 @@ public class Movie {
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<MovieReview> reviews;
 
-//    public void addReview(MovieReview review) {
-//        if (reviews == null) {
-//            reviews = new ArrayList<>();
-//        }
-//        reviews.add(review);
-//        review.setMovie(this);
-//    }
 
     @ManyToOne
     @JoinColumn(name = "studio_id")
     private MovieStudio studio;
 
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "movie_actor",
             joinColumns = @JoinColumn(name = "movie_id"),
